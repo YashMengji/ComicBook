@@ -1,6 +1,5 @@
 const express = require("express");
 require("dotenv").config()
-const comicModel = require("./models/ComicBooks");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/errorHandler");
 const comicBookRoutes = require("./routes/comicBookRoutes");
