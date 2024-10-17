@@ -2,6 +2,8 @@ const express = require("express");
 require("dotenv").config()
 const comicModel = require("./models/ComicBooks");
 const connectDB = require("./config/db");
+const errorHandler = require("./middlewares/errorHandler");
+const comicBookRoutes = require("./routes/comicBookRoutes");
 
 const app = express();
 
@@ -10,6 +12,10 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 
+// Error handling middleware
+app.use(errorHandler)
+
+app.use("/api/comics", comicBookRoutes)
 
 app.get("/", (req, res) => {
   res.send("Home page");
