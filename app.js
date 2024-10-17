@@ -12,14 +12,11 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({extended: true})); 
 
+// "/api/comics" is added as prefix to all routes in comicBookRoutes
+app.use("/api/comics", comicBookRoutes) // "/comics" after "/api" indicates all comics routes are grouped together
+
 // Error handling middleware
 app.use(errorHandler)
-
-app.use("/api/comics", comicBookRoutes)
-
-app.get("/", (req, res) => {
-  res.send("Home page");
-})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

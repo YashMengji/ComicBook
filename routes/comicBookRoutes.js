@@ -1,10 +1,11 @@
 const express = require("express");
-const createComicBook = require("../controllers/comicBookController");
-
-const router = express.router();
+const {createComicBook, getComicBooks} = require("../controllers/comicBookController");
+const router = express.Router();
 
 // Prefixed by route mentioned in app.use()
-router.post("/", createComicBook)
+router.post("/", createComicBook);
+
+router.get("/", getComicBooks);
 
 
-module.exports = router
+module.exports = router;
